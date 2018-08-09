@@ -18,5 +18,5 @@ build:
     # "Run" a test
     - date > $TESTREPORTSPATH/test1.xml
     # Restore missing reports
-    - cp -ru /tmp/reports $TESTREPORTSPATH
+    - cp -ru /tmp/reports/. $TESTREPORTSPATH
     - cat $TESTREPORTSPATH/*.xml
