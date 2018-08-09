@@ -1,0 +1,22 @@
+language: none
+cache: true
+build:
+  ci:
+    - mkdir reports
+    - TESTREPORTSPATH=reports
+    # Create some dummy report files
+    - date > $TESTREPORTSPATH/test1.xml
+    - cp $TESTREPORTSPATH/test1.xml $TESTREPORTSPATH/test2.xml
+    - cp $TESTREPORTSPATH/test1.xml $TESTREPORTSPATH/test3.xml
+    - cp $TESTREPORTSPATH/test1.xml $TESTREPORTSPATH/test4.xml
+    - cp $TESTREPORTSPATH/test1.xml $TESTREPORTSPATH/test5.xml
+    - cat $TESTREPORTSPATH/*.xml
+    # Back them up
+    - cp -r $TESTREPORTSPATH/. /tmp/reports
+    - rm -rf $TESTREPORTSPATH
+    - mkdir -p $TESTREPORTSPATH
+    # "Run" a test
+    - date > $TESTREPORTSPATH/test1.xml
+    # Restore missing reports
+    - cp -ru /tmp/reports $TESTREPORTSPATH
+    - cat $TESTREPORTSPATH/*.xml
