@@ -1,4 +1,7 @@
 language: none
+env:
+  - foo=bar
+  - fizz=bin
 build:
   cache: true
   ci:
